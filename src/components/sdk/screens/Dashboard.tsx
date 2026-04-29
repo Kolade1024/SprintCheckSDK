@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Camera, Shield, Fingerprint, CreditCard, ChevronRight, Bell, Settings, User, LayoutGrid, History, HelpCircle, LogOut, ArrowUpRight, Pencil, Save, CheckCircle, CheckCircle2 } from 'lucide-react';
+import { Camera, Shield, Fingerprint, CreditCard, ChevronRight, Bell, User, Pencil, Save, CheckCircle, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface DashboardProps {

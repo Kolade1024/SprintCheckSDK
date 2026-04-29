@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, PartyPopper, ArrowRight, Sparkles, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, PartyPopper, ArrowRight, ShieldCheck } from 'lucide-react';
 import { Layout } from '../Layout';
 import { motion } from 'framer-motion';
 

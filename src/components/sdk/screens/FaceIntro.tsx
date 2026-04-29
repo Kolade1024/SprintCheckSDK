@@ -1,5 +1,5 @@
 import React from 'react';
-import { Camera, Sun, Glasses, Scan, UserCheck, Sparkles, ShieldCheck } from 'lucide-react';
+import { Camera, Scan, UserCheck } from 'lucide-react';
 import { Layout } from '../Layout';
 import { motion } from 'framer-motion';
 
@@ -70,11 +70,3 @@ export const FaceIntro: React.FC<FaceIntroProps> = ({ onStart, onBack, onClose }
   );
 };
 
-const Tip: React.FC<{ icon: React.ReactNode; text: string }> = ({ icon, text }) => (
-  <div className="flex flex-col items-center gap-3 p-5 bg-white rounded-lg border border-slate-200 group hover:bg-slate-50 transition-all duration-300">
-    <div className="text-black bg-slate-100 p-3 rounded-md group-hover:bg-black group-hover:text-white transition-all duration-300">
-      {icon}
-    </div>
-    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest text-center leading-tight">{text}</span>
-  </div>
-);

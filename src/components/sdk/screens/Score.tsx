@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Layout } from '../Layout';
-import { CheckCircle2, XCircle, Home, RotateCcw, Award, ShieldCheck, Sparkles } from 'lucide-react';
+import { CheckCircle2, XCircle, Home, RotateCcw, Award, ShieldCheck } from 'lucide-react';
 
 interface ScoreProps {
   type: 'success' | 'fail';
@@ -23,7 +23,7 @@ export const Score: React.FC<ScoreProps> = ({
 
   // Removed automatic countdown redirect to allow users to review results
 
-  const rotation = -90 + (score / 100) * 180;
+
 
   return (
     <Layout wide>

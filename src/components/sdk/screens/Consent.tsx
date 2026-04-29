@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Lock, UserCheck, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 import { Layout } from '../Layout';
 import { motion } from 'framer-motion';
 

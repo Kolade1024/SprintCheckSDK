@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, ChevronLeft, ShieldCheck, Lock, Globe } from 'lucide-react';
+import { X, ChevronLeft, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface LayoutProps {

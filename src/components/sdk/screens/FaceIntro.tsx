@@ -1,5 +1,5 @@
 import React from 'react';
-import { Camera, Scan, UserCheck } from 'lucide-react';
+import { Camera, ArrowRight } from 'lucide-react';
 import { Layout } from '../Layout';
 import { motion } from 'framer-motion';
 
@@ -12,61 +12,35 @@ interface FaceIntroProps {
 export const FaceIntro: React.FC<FaceIntroProps> = ({ onStart, onBack, onClose }) => {
   return (
     <Layout onBack={onBack} onClose={onClose} showSteps currentStep={3}>
-      <div className="space-y-12 py-4">
-        <div className="flex justify-center">
-          <div className="relative">
-            <div className="relative w-44 h-44 bg-slate-50 rounded-full flex items-center justify-center border border-slate-200 overflow-hidden group">
-              <div className="text-black group-hover:scale-110 transition-transform duration-700">
-                <UserCheck size={80} strokeWidth={1} />
-              </div>
-            </div>
+      <div className="flex flex-col items-center text-center space-y-10 py-6">
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: "spring", damping: 20 }}
+          className="w-28 h-28 bg-slate-50 rounded-full flex items-center justify-center"
+        >
+          <Camera size={44} strokeWidth={1.2} className="text-slate-400" />
+        </motion.div>
 
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.5, type: "spring" }}
-              className="absolute -bottom-3 -right-3 w-14 h-14 bg-black rounded-full flex items-center justify-center text-white border-4 border-white"
-            >
-              <Camera size={24} />
-            </motion.div>
-          </div>
-        </div>
-
-        <div className="space-y-3 text-center">
-          <div className="flex items-center justify-center gap-2 mb-1">
-            <span className="text-[10px] font-bold text-black uppercase tracking-[0.3em]">AI Biometric Active</span>
-          </div>
-          <h2 className="text-3xl font-display font-bold text-black tracking-tight">Facial Authentication</h2>
-          <p className="text-[15px] font-medium text-slate-500 max-w-[280px] mx-auto leading-relaxed">
-            Final step: Confirm it's really you with a quick biometric identity scan.
+        <div className="space-y-3">
+          <h2 className="text-2xl font-semibold text-slate-900">Take a quick selfie</h2>
+          <p className="text-[15px] text-slate-500 max-w-[280px] mx-auto leading-relaxed">
+            We'll compare your photo with your ID. Make sure you have good lighting.
           </p>
         </div>
 
-        {/* <div className="grid grid-cols-2 gap-4">
-          <Tip icon={<Sun size={20} />} text="Optimal Light" />
-          <Tip icon={<Glasses size={20} />} text="Clear Face" />
-          <Tip icon={<Scan size={20} />} text="Frame Alignment" />
-          <Tip icon={<ShieldCheck size={20} />} text="Secure Stream" />
-        </div> */}
-
-        <div className="pt-6 relative">
+        <div className="w-full pt-2">
           <button
             onClick={onStart}
             className="btn-premium group"
           >
-            <div className="flex items-center justify-center gap-3">
-              <span className="uppercase tracking-widest text-[13px]">Initialize Biometric Scan</span>
-              <Scan size={20} className="group-hover:rotate-90 transition-transform duration-500" />
+            <div className="flex items-center justify-center gap-2">
+              <span>Open camera</span>
+              <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
             </div>
           </button>
-          <div className="flex items-center justify-center gap-2 mt-8 opacity-40">
-            <div className="h-px w-8 bg-slate-300" />
-            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Enterprise Identity Standard</span>
-            <div className="h-px w-8 bg-slate-300" />
-          </div>
         </div>
       </div>
     </Layout>
   );
 };
-

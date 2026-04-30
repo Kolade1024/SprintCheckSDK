@@ -76,8 +76,8 @@ export default class LivenessSDK {
 
   static ALL_CHALLENGES = [
     { id: 'blink', name: 'Blink 2 Times', icon: '\uD83D\uDC41\uFE0F', desc: 'Blink both eyes 2 times', prompt: 'Blink your eyes 2 times', sub: 'Keep your face centred', requiredCount: 2 },
-    { id: 'turn_left', name: 'Turn Head Right', icon: '\u2B05\uFE0F', desc: 'Slowly turn head to the LEFT', prompt: 'Turn your head to the RIGHT', sub: 'Slow and steady', direction: 'left' },
-    { id: 'turn_right', name: 'Turn Head Left', icon: '\u27A1\uFE0F', desc: 'Slowly turn head to the RIGHT', prompt: 'Turn your head to the LEFT', sub: 'Slow and steady', direction: 'right' },
+    { id: 'turn_left', name: 'Turn Head Right', icon: '\u2B05\uFE0F', desc: 'Slowly turn head to the RIGHT', prompt: 'Turn your head to the RIGHT', sub: 'Slow and steady', direction: 'left' },
+    { id: 'turn_right', name: 'Turn Head Left', icon: '\u27A1\uFE0F', desc: 'Slowly turn head to the LEFT', prompt: 'Turn your head to the LEFT', sub: 'Slow and steady', direction: 'right' },
     { id: 'nod', name: 'Nod Your Head', icon: '\u2195\uFE0F', desc: 'Nod your head up and down', prompt: 'Nod your head down, then up', sub: 'Full nod required' },
     { id: 'smile', name: 'Smile & Hold', icon: '\uD83D\uDE01', desc: 'Big smile, hold it steady', prompt: 'Smile and hold it!', sub: 'Hold for half a second' },
     { id: 'mouth_open', name: 'Open Your Mouth', icon: '\uD83D\uDE2E', desc: 'Open your mouth wide', prompt: 'Open your mouth wide', sub: 'Hold it open briefly' },
@@ -129,7 +129,7 @@ export default class LivenessSDK {
     if (document.getElementById('ntl-inline-styles')) return;
     const style = document.createElement('style');
     style.id = 'ntl-inline-styles';
-    style.textContent = '.ntl-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:99998;display:flex;align-items:center;justify-content:center;padding:16px;animation:ntl-fadeIn .25s ease}@keyframes ntl-fadeIn{from{opacity:0}to{opacity:1}}.ntl-modal{background:#fff;border-radius:28px;width:100%;max-width:420px;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.28);animation:ntl-slideUp .32s cubic-bezier(.34,1.56,.64,1)}@keyframes ntl-slideUp{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}.ntl-root{font-family:\'Segoe UI\',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;--ntl-white:#fff;--ntl-blue:#4A90D9;--ntl-blue-light:#7BB8F0;--ntl-blue-pale:#EAF3FC;--ntl-blue-ring:#A8D4F5;--ntl-green:#22c55e;--ntl-red:#ef4444;--ntl-text:#1a1a2e;--ntl-text-mid:#555577;--ntl-text-muted:#9999bb;--ntl-circle-size:min(260px,58vw)}';
+    style.textContent = '.ntl-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:99998;display:flex;align-items:center;justify-content:center;padding:16px;animation:ntl-fadeIn .25s ease}@keyframes ntl-fadeIn{from{opacity:0}to{opacity:1}}.ntl-modal{background:#fff;border-radius:28px;width:100%;max-width:420px;max-height:100vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.28);animation:ntl-slideUp .32s cubic-bezier(.34,1.56,.64,1)}@keyframes ntl-slideUp{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}.ntl-root{font-family:\'Segoe UI\',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;--ntl-white:#fff;--ntl-blue:#4A90D9;--ntl-blue-light:#7BB8F0;--ntl-blue-pale:#EAF3FC;--ntl-blue-ring:#A8D4F5;--ntl-green:#22c55e;--ntl-red:#ef4444;--ntl-text:#1a1a2e;--ntl-text-mid:#555577;--ntl-text-muted:#9999bb;--ntl-circle-size:min(260px,58vw)}';
     document.head.appendChild(style);
   }
 
@@ -143,7 +143,7 @@ export default class LivenessSDK {
     d.backdrop.setAttribute('aria-label', opts.title || 'Face Verification');
     d.backdrop.addEventListener('click', (e: any) => { if (e.target === d.backdrop) this._dismiss(false); });
 
-    d.modal = this._el('div', 'ntl-modal');
+    d.modal = this._el('div', '');
     d.backdrop.appendChild(d.modal);
 
     const header = this._el('div', 'ntl-header');

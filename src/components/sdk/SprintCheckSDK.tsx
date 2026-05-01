@@ -10,7 +10,13 @@ import { Success } from './screens/Success';
 import { LivenessView } from './screens/LivenessView';
 import { AnimatePresence, motion } from 'framer-motion';
 
-export const SprintCheckSDK: React.FC = () => {
+export interface SprintCheckSDKProps {
+  apiKey?: string;
+  encryptionKey?: string;
+  email?: string;
+}
+
+export const SprintCheckSDK: React.FC<SprintCheckSDKProps> = ({ apiKey, encryptionKey, email }) => {
   const {
     state,
     setStep,
@@ -21,7 +27,13 @@ export const SprintCheckSDK: React.FC = () => {
     startVerification,
     handleLivenessComplete,
     reset
-  } = useSprintCheck();
+  } = useSprintCheck({ apiKey, encryptionKey });
+
+  React.useEffect(() => {
+    if (email) {
+      setEmail(email);
+    }
+  }, [email, setEmail]);
 
   const handleAction = (type: 'FACE' | 'BVN' | 'NIN' | 'ID') => {
     setSelectedAction(type);

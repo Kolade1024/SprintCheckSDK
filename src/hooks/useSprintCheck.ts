@@ -29,10 +29,6 @@ interface SprintCheckState {
   apiReference: string | null;
 }
 
-const API_KEY = import.meta.env.VITE_SPRINTCHECK_API_KEY;
-const ENCRYPTION_KEY = import.meta.env.VITE_SPRINTCHECK_ENCRYPTION_KEY;
-
-
 const STORAGE_KEY = 'sprintcheck_user_details';
 
 function loadSavedDetails(): { email: string; bvn: string; nin: string } {
@@ -49,7 +45,16 @@ function saveDetails(email: string, bvn: string, nin: string) {
   } catch { }
 }
 
-export function useSprintCheck() {
+export function useSprintCheck({
+  apiKey,
+  encryptionKey
+}: {
+  apiKey?: string;
+  encryptionKey?: string;
+} = {}) {
+  const API_KEY = apiKey || import.meta.env.VITE_SPRINTCHECK_API_KEY;
+  const ENCRYPTION_KEY = encryptionKey || import.meta.env.VITE_SPRINTCHECK_ENCRYPTION_KEY;
+
   const saved = loadSavedDetails();
 
   const [state, setState] = useState<SprintCheckState>({

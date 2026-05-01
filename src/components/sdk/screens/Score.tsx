@@ -18,7 +18,6 @@ export const Score: React.FC<ScoreProps> = ({
   image,
   onHome,
   onRetry,
-  referenceImage
 }) => {
 
   // Removed automatic countdown redirect to allow users to review results

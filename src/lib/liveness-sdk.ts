@@ -76,8 +76,8 @@ export default class LivenessSDK {
 
   static ALL_CHALLENGES = [
     { id: 'blink', name: 'Blink 2 Times', icon: '\uD83D\uDC41\uFE0F', desc: 'Blink both eyes 2 times', prompt: 'Blink your eyes 2 times', sub: 'Keep your face centred', requiredCount: 2 },
-    { id: 'turn_left', name: 'Turn Head Right', icon: '\u2B05\uFE0F', desc: 'Slowly turn head to the RIGHT', prompt: 'Turn your head to the RIGHT', sub: 'Slow and steady', direction: 'left' },
-    { id: 'turn_right', name: 'Turn Head Left', icon: '\u27A1\uFE0F', desc: 'Slowly turn head to the LEFT', prompt: 'Turn your head to the LEFT', sub: 'Slow and steady', direction: 'right' },
+    { id: 'turn_left', name: 'Turn Head Right', icon: '\u2B05\uFE0F', desc: 'Slowly turn head to the RIGHT', prompt: 'Turn your head to the RIGHT', sub: 'Slow and steady', direction: 'Right' },
+    { id: 'turn_right', name: 'Turn Head Left', icon: '\u27A1\uFE0F', desc: 'Slowly turn head to the LEFT', prompt: 'Turn your head to the LEFT', sub: 'Slow and steady', direction: 'Left' },
     { id: 'nod', name: 'Nod Your Head', icon: '\u2195\uFE0F', desc: 'Nod your head up and down', prompt: 'Nod your head down, then up', sub: 'Full nod required' },
     { id: 'smile', name: 'Smile & Hold', icon: '\uD83D\uDE01', desc: 'Big smile, hold it steady', prompt: 'Smile and hold it!', sub: 'Hold for half a second' },
     { id: 'mouth_open', name: 'Open Your Mouth', icon: '\uD83D\uDE2E', desc: 'Open your mouth wide', prompt: 'Open your mouth wide', sub: 'Hold it open briefly' },

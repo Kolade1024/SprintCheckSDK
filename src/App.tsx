@@ -1,8 +1,20 @@
 import { SprintCheckSDK } from './components/sdk/SprintCheckSDK'
 
-function App() {
+interface AppProps {
+  apiKey?: string;
+  encryptionKey?: string;
+  email?: string;
+  callbackUrl?: string;
+}
+
+function App({ apiKey, encryptionKey, email, callbackUrl }: AppProps) {
   return (
-    <SprintCheckSDK />
+    <SprintCheckSDK
+      apiKey={apiKey}
+      encryptionKey={encryptionKey}
+      email={email}
+      callbackUrl={callbackUrl}
+    />
   )
 }
 

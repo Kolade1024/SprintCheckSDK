@@ -14,9 +14,21 @@ export interface SprintCheckSDKProps {
   apiKey?: string;
   encryptionKey?: string;
   email?: string;
+  callbackUrl?: string;
 }
 
-export const SprintCheckSDK: React.FC<SprintCheckSDKProps> = ({ apiKey, encryptionKey, email }) => {
+/** Send a message to the parent window (for iframe integration) */
+function postToParent(type: string, data: Record<string, unknown> = {}) {
+  try {
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type, ...data }, '*');
+    }
+  } catch {
+    // Silently fail if cross-origin restrictions prevent postMessage
+  }
+}
+
+export const SprintCheckSDK: React.FC<SprintCheckSDKProps> = ({ apiKey, encryptionKey, email, callbackUrl }) => {
   const {
     state,
     setStep,
@@ -29,11 +41,47 @@ export const SprintCheckSDK: React.FC<SprintCheckSDKProps> = ({ apiKey, encrypti
     reset
   } = useSprintCheck({ apiKey, encryptionKey });
 
+  // Notify parent that SDK is ready
+  React.useEffect(() => {
+    postToParent('SPRINTCHECK_READY');
+  }, []);
+
+  // Set email from URL param
   React.useEffect(() => {
     if (email) {
       setEmail(email);
     }
   }, [email, setEmail]);
+
+  // Notify parent on step changes
+  React.useEffect(() => {
+    postToParent('SPRINTCHECK_STEP_CHANGE', { step: state.step });
+
+    // Notify completion
+    if (state.step === 'SCORE_SUCCESS' || state.step === 'SCORE_FAIL') {
+      const status = state.step === 'SCORE_SUCCESS' ? 'success' : 'fail';
+      postToParent('SPRINTCHECK_COMPLETE', {
+        status,
+        score: state.score,
+      });
+
+      // Redirect to callbackUrl if provided
+      if (callbackUrl && state.step === 'SCORE_SUCCESS') {
+        const url = new URL(callbackUrl);
+        url.searchParams.set('status', status);
+        url.searchParams.set('score', String(state.score));
+        // Delay redirect to let user see the result
+        setTimeout(() => {
+          window.location.href = url.toString();
+        }, 3000);
+      }
+    }
+
+    // Notify errors
+    if (state.error) {
+      postToParent('SPRINTCHECK_ERROR', { error: state.error });
+    }
+  }, [state.step, state.score, state.error, callbackUrl]);
 
   const handleAction = (type: 'FACE' | 'BVN' | 'NIN' | 'ID') => {
     setSelectedAction(type);

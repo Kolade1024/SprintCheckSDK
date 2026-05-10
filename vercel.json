@@ -3,6 +3,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://api.sprintcheck.megasprintlimited.com.ng/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }

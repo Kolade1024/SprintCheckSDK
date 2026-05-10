@@ -1,13 +1,8 @@
 {
-  "name": "sprintcheck-react-sdk",
-  "private": false,
+  "name": "@samji/sprintcheck-react-sdk",
+  "private": true,
   "version": "1.0.0",
   "type": "module",
-  "main": "./dist/sprintcheck-sdk.umd.js",
-  "module": "./dist/sprintcheck-sdk.es.js",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
